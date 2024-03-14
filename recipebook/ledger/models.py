@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 from django.urls import reverse
 
 class Ingredient(models.Model):
@@ -7,14 +8,14 @@ class Ingredient(models.Model):
   def __str__(self):
      return '{}'.format(self.name)
   
-  def get_absolute_url(self):
-   return reverse('ledger:recipe', args=[str(self.pk)])
-  
 class Recipe(models.Model):
   name = models.CharField(max_length=50)
+  author = models.CharField(max_length=50, null=True)
+  created_on = models.DateTimeField(auto_now_add=True, null=True)
+  updated_on = models.DateTimeField(auto_now=True, null=True)
   
   def __str__(self):
-     return '{}'.format(self.name)
+     return '{}'.format(self.name, self.author)
    
   def get_absolute_url(self):
    return reverse('ledger:recipe', args=[str(self.pk)])

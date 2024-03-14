@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Recipe Site: Recipe</title>
-</head>
-<body>
-    <div>
-        <h1>Recipe Book</h1>
-        <h2>Ingredients:</h2>
-        <ul>
-            {% for ingredient in object.ingredient.all %}
-                <li> {{ ingredient.ingredient.name }} {{ ingredient.quantity }}
-                </li>
-                {% endfor %}
-        </ul>   
-    </div>
+{% extends "base.html" %}
+{% block content %}
+    <h2>Ingredients:</h2>
+    <ul>
+        {% for ingredient in object.ingredient.all %}
+            <li> {{ ingredient.ingredient.name }} {{ ingredient.quantity }}
+            </li>
+            {% endfor %}
+    </ul>   
+{% endblock %}
     
-</body>
-</html>
